@@ -1,5 +1,3 @@
-import "./App.css";
-
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
 import cocktailDB from "./api";
@@ -79,7 +77,11 @@ function App() {
           toggleFavourites={toggleFavourites}
           showFavourites={showFavourites}
         />
-        <SearchResults searchResults={searchResults} />
+        {showFavourites ? (
+          <FavouriteDrinks />
+        ) : (
+          <SearchResults searchResults={searchResults} />
+        )}
       </div>
     );
   }
@@ -114,7 +116,12 @@ function App() {
           toggleFavourites={toggleFavourites}
           showFavourites={showFavourites}
         />
-        <Drinks drinks={drinks} />
+        
+        {showFavourites ? (
+          <FavouriteDrinks />
+        ) : (
+          <Drinks drinks={drinks} />
+        )}
       </div>
     );
   }
