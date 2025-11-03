@@ -53,6 +53,7 @@
 
 .favourite.active {
   filter: none;
+  border: none;
 }
 
 .favourite:hover {

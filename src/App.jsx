@@ -1,5 +1,4 @@
-
-import './App.css'
+import "./App.css";
 
 import styles from "./App.module.css";
 import { useEffect, useState } from "react";
@@ -8,11 +7,14 @@ import Drinks from "./components/Drinks/Drinks";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loading from "./components/Loading/Loading";
 import SearchResults from "./components/Searchresults/SearchResults";
+import FavouriteDrinks from "./components/Favourites/Favourites";
+import ShowFavouritesButton from "./components/ShowFavouritesButton/ShowFavouritesButton";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [drinks, setDrinks] = useState([]);
   const [loading, setLoading] = useState("true");
+  const [showFavourites, setShowFavourites] = useState(false);
 
   async function search(term) {
     await cocktailDB.search(term).then((result) => setSearchResults(result));
@@ -45,11 +47,19 @@ function App() {
       .then(() => setLoading(false));
   }
 
+  function toggleFavourites() {
+    setShowFavourites((prevState) => !prevState);
+  }
+
   if (loading) {
     return (
       <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>Displaying and filtering API data with React</h3>
-        <h4 className={styles.demo__subheader}>You can choose your favourite drinks and view them on the next tab!</h4>
+        <h3 className={styles.demo__header}>
+          Displaying and filtering API data with React
+        </h3>
+        <h4 className={styles.demo__subheader}>
+          You can choose your favourite drinks and view them on the next tab!
+        </h4>
         <SearchBar onSearch={search} />
         <Loading />
       </div>
@@ -58,25 +68,56 @@ function App() {
   if (searchResults.length > 0) {
     return (
       <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>Displaying and filtering API data with React</h3>
-            <h4 className={styles.demo__subheader}>You can choose your favourite drinks and view them on the next tab!</h4>
+        <h3 className={styles.demo__header}>
+          Displaying and filtering API data with React
+        </h3>
+        <h4 className={styles.demo__subheader}>
+          You can choose your favourite drinks and view them on the next tab!
+        </h4>
         <SearchBar onSearch={search} />
+        <ShowFavouritesButton
+          toggleFavourites={toggleFavourites}
+          showFavourites={showFavourites}
+        />
         <SearchResults searchResults={searchResults} />
       </div>
     );
   }
-
-  else {
+  if (showFavourites) {
     return (
       <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>Displaying and filtering API data with React</h3>
-            <h4 className={styles.demo__subheader}>You can choose your favourite drinks and view them on the next tab!</h4>
+        <h3 className={styles.demo__header}>
+          Displaying and filtering API data with React
+        </h3>
+        <h4 className={styles.demo__subheader}>
+          You can choose your favourite drinks and view them on the next tab!
+        </h4>
         <SearchBar onSearch={search} />
+        <ShowFavouritesButton
+          toggleFavourites={toggleFavourites}
+          showFavourites={showFavourites}
+        />
+        <FavouriteDrinks />
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.wrapper}>
+        <h3 className={styles.demo__header}>
+          Displaying and filtering API data with React
+        </h3>
+        <h4 className={styles.demo__subheader}>
+          You can choose your favourite drinks and view them on the next tab!
+        </h4>
+        <SearchBar onSearch={search} />
+        <ShowFavouritesButton
+          toggleFavourites={toggleFavourites}
+          showFavourites={showFavourites}
+        />
         <Drinks drinks={drinks} />
       </div>
     );
-  } 
-  
+  }
 }
 
-export default App
+export default App;

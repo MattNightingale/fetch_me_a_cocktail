@@ -29,6 +29,8 @@ function SearchBar(props) {
     }
   };
 
+ 
+
 
   return (
     <div className={styles.searchBar}>
@@ -44,6 +46,7 @@ function SearchBar(props) {
       <button id='button' type="button" className={styles.searchbutton} onClick={newSearch} >
         SEARCH
       </button>
+      
     </div>
   );
 }
