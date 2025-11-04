@@ -20,6 +20,7 @@ function SearchResults({ searchResults, onShowDetails }) {
 
   return (
     <div className={styles.wrapper}>
+      <h3>Showing your search results</h3>
       {searchResults.map((drink) => {
         return (
           <div key={drink.id} className={styles.tile}>

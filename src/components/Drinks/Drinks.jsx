@@ -20,6 +20,7 @@ function Drinks({ drinks, onShowDetails }) {
 
   return (
     <div className={styles.wrapper}>
+      <h3>Showing 10 drinks at random</h3>
       {drinks.map((drink) => {
         return (
           <div key={drink[0].id} className={styles.tile}>

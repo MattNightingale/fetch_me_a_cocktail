@@ -8,6 +8,7 @@ import SearchResults from "./components/Searchresults/SearchResults";
 import FavouriteDrinks from "./components/Favourites/Favourites";
 import ShowFavouritesButton from "./components/ShowFavouritesButton/ShowFavouritesButton";
 import Details from "./components/Details/Details";
+import Header from "./components/Header/Header";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -17,11 +18,14 @@ function App() {
   const [showDetails, setShowDetails] = useState(false);
   const [selectedDrink, setSelectedDrink] = useState(null);
 
+
+
   async function search(term) {
     await cocktailDB
       .search(term)
       .then((result) => setSearchResults(result))
       .then(() => setLoading(false));
+      setShowFavourites(false);
   }
 
   useEffect(() => {
@@ -35,7 +39,7 @@ function App() {
   async function tenDrinksArray() {
     let drinksArray = [];
 
-    for (let i = 0; i < 9; i++) {
+    for (let i = 0; i < 10; i++) {
       drinksArray.push(await cocktailDB.randomDrink([i]));
     }
     return drinksArray;
@@ -66,42 +70,34 @@ function App() {
 
   if (searchResults.length > 0) {
     return (
-      <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>
-          Displaying and filtering API data with React
-        </h3>
-        <h4 className={styles.demo__subheader}>
-          You can choose your favourite drinks and view them on the next tab!
-        </h4>
-        <SearchBar onSearch={search} />
-        <ShowFavouritesButton
-          toggleFavourites={toggleFavourites}
-          showFavourites={showFavourites}
-        />
-        {showDetails && (
-          <Details drink={selectedDrink} onClose={closeDetails} />
-        )}
-        {loading ? <Loading /> : null}
-        {showFavourites ? (
-          <FavouriteDrinks onShowDetails={openDetails} />
-        ) : (
-          <SearchResults
-            searchResults={searchResults}
-            onShowDetails={openDetails}
+      <>
+        <Header />
+        <div className={styles.wrapper}>
+          <SearchBar onSearch={search} />
+          <ShowFavouritesButton
+            toggleFavourites={toggleFavourites}
+            showFavourites={showFavourites}
           />
-        )}
-      </div>
+          {showDetails && (
+            <Details drink={selectedDrink} onClose={closeDetails} />
+          )}
+          {loading ? <Loading /> : null}
+          {showFavourites ? (
+            <FavouriteDrinks onShowDetails={openDetails} />
+          ) : (
+            <SearchResults
+              searchResults={searchResults}
+              onShowDetails={openDetails}
+            />
+          )}
+        </div>
+      </>
     );
   }
   if (showFavourites) {
     return (
       <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>
-          Displaying and filtering API data with React
-        </h3>
-        <h4 className={styles.demo__subheader}>
-          You can choose your favourite drinks and view them on the next tab!
-        </h4>
+        <Header />
         <ShowFavouritesButton
           toggleFavourites={toggleFavourites}
           showFavourites={showFavourites}
@@ -115,12 +111,7 @@ function App() {
   } else {
     return (
       <div className={styles.wrapper}>
-        <h3 className={styles.demo__header}>
-          Displaying and filtering API data with React
-        </h3>
-        <h4 className={styles.demo__subheader}>
-          You can choose your favourite drinks and view them on the next tab!
-        </h4>
+        <Header />
         <SearchBar onSearch={search} />
         <ShowFavouritesButton
           toggleFavourites={toggleFavourites}

@@ -1,0 +1,18 @@
+.header {
+  width: 100%;
+  background-color: rgb(62, 158, 255);
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.header h1 {
+  font-size: 2rem;
+  font-family: "Dancing Script";
+  color: aliceblue;
+  padding: 1rem;
+  margin: 0;
+  text-align: center;
+}

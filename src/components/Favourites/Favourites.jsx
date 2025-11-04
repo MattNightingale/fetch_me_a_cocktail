@@ -18,16 +18,11 @@ function FavouriteDrinks({ drinks, onShowDetails }) {
 
   return (
     <div className={styles.wrapper}>
-      <h3 className={styles.demo__header}>
-        Showing your favourite drinks thanks to the Redux-toolkit store
-      </h3>
-      <h4 className={styles.demo__subheader}>
-        You can also unfavourite them here to remove
-      </h4>
-
+      <h3>Showing your favourite drinks</h3>
       {favourites.map((drink) => {
         return (
           <div key={drink.id} className={styles.tile}>
+            
             <li
               className={styles.item}
               onClick={() => onShowDetails && onShowDetails(drink)}
