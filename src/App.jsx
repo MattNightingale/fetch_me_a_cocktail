@@ -4,7 +4,7 @@ import cocktailDB from "./api";
 import Drinks from "./components/Drinks/Drinks";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loading from "./components/Loading/Loading";
-import SearchResults from "./components/Searchresults/SearchResults";
+import SearchResults from "./components/SearchResults/SearchResults";
 import FavouriteDrinks from "./components/Favourites/Favourites";
 import ShowFavouritesButton from "./components/ShowFavouritesButton/ShowFavouritesButton";
 import Details from "./components/Details/Details";
