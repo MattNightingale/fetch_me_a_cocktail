@@ -1,0 +1,87 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  padding: 1.25rem;
+  border-radius: 8px;
+  max-width: 520px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  position: relative;
+  /* limit modal height to viewport and allow internal scrolling */
+  max-height: 80vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.close {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+}
+
+h4 {
+  margin: 0 0 0.5rem 0;
+  color: #666;
+}
+
+li {
+  font-size: 13px;
+}
+
+p {
+  font-size: 13px;
+}
+
+.image {
+  width: 50%;
+  /* keep image reasonably sized within the modal so content can scroll */
+  max-height: 36vh;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  margin: 0.25rem 0;
+  color: #333;
+}
+
+.instructions {
+  margin-top: 0.5rem;
+}
+
+.ingredients {
+  margin-top: 0.5rem;
+}
+
+.ingredients ul {
+  padding-left: 1.25rem;
+  margin: 0.25rem 0;
+}
+
+.ingredientItem {
+  font-size: 13px;
+}

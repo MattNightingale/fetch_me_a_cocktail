@@ -1,0 +1,12 @@
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.favouriteButton {
+  height: 35px;
+  border: 2px solid rgb(62, 158, 255);
+  border-radius: 5px;
+}

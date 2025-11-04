@@ -5,7 +5,7 @@ import {
   removeFromFavourites,
 } from "../Favourites/FavouritesSlice";
 
-function SearchResults({ searchResults }) {
+function SearchResults({ searchResults, onShowDetails }) {
   const dispatch = useDispatch();
   const favourites = useSelector((state) => state.favourites);
 
@@ -23,12 +23,19 @@ function SearchResults({ searchResults }) {
       {searchResults.map((drink) => {
         return (
           <div key={drink.id} className={styles.tile}>
-            <li className={styles.item}>
+            <li
+              className={styles.item}
+              onClick={() => onShowDetails && onShowDetails(drink)}
+            >
               <h2 className={styles.caption}>{drink.name}</h2>
               <img className={styles.image} src={drink.image} />
+              <h4>Click for details</h4>
               <button
                 className={styles.favouritebutton}
-                onClick={() => handleToggleFavourite(drink)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleToggleFavourite(drink);
+                }}
               >
                 <img
                   className={

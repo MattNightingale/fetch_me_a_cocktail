@@ -5,11 +5,11 @@ function ToggleFavouritesButton({ toggleFavourites, showFavourites }) {
   
 
   return (
-    <div>
+    <div className={styles.buttonWrapper}>
       <button
         id="button"
         type="button"
-        className={styles.favouritebutton}
+        className={styles.favouriteButton}
         onClick={toggleFavourites}
       >
         {showFavourites ? "Hide favourites" : "Show favourites"}
